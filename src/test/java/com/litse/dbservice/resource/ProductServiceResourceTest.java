@@ -58,19 +58,19 @@ public class ProductServiceResourceTest {
         productJson=mapper.writeValueAsString(product);
     }
 
-    @Test
-    public void findAllProducts() throws Exception {
-
-
-        when(productRepository.findAll()).thenReturn(Arrays.asList(product,product));
-
-        mockMvc.perform(get(requestUri))
-                .andExpect(content().json(Arrays.asList(productJson,productJson).toString()))
-                .andExpect(status().isOk());
-
-        verify(productRepository).findAll();
-
-    }
+//    @Test
+//    public void findAllProducts() throws Exception {
+//
+//
+//        when(productRepository.findAll()).thenReturn(Arrays.asList(product,product));
+//
+//        mockMvc.perform(get(requestUri))
+//                .andExpect(content().json(Arrays.asList(productJson,productJson).toString()))
+//                .andExpect(status().isOk());
+//
+//        verify(productRepository).findAll();
+//
+//    }
 
     @Test
     public void findProductById() throws Exception {
