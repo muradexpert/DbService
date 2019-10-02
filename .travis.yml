@@ -7,7 +7,13 @@ addons:
     token:
       secure: "37d400320156eb1d6d6677d867f045889f80740c"
       # encrypted value of your token
-
+postgres:
+  adapter: postgresql
+  database: shop
+  username: postgres
+before_script:
+- "psql -c 'create database shop;' -U postgres"
+- "rake db:migrate"
 script:
 # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=muradexpert_DbService
