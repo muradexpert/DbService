@@ -35,8 +35,8 @@ public class ProductServiceResource {
                     @ApiResponse(code = 200, message = "Successful Hello World")
             })
     @GetMapping("/")
-    public List<Product> findAllProducts() {
-        return productRepository.findAll();
+    public ResponseEntity<List<Product>> findAllProducts() {
+        return new ResponseEntity<>(productRepository.findAll(),HttpStatus.OK);
     }
 
     @GetMapping("/{productName}")

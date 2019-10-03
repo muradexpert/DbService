@@ -42,7 +42,7 @@ public class ProductServiceResourceTest {
     @Autowired
     private ObjectMapper mapper;
     private Product product;
-    private String requestUri = "/product";
+    private String requestUri = "/product/";
     private String productJson;
 
 
@@ -76,7 +76,7 @@ public class ProductServiceResourceTest {
     public void findProductById() throws Exception {
         when(productRepository.findByProductName("test")).thenReturn(product);
 
-        mockMvc.perform(get(requestUri+"/{productName}","test"))
+        mockMvc.perform(get(requestUri+"{productName}","test"))
                 .andExpect(content().json(productJson))
                 .andExpect(status().isOk());
 
@@ -106,7 +106,7 @@ public class ProductServiceResourceTest {
     @Test
     public void updateProduct() throws Exception {
         when(productRepository.save(any())).thenReturn(product);
-        mockMvc.perform(MockMvcRequestBuilders.put(requestUri+"/{id}",0).contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writeValueAsString(product)))
+        mockMvc.perform(MockMvcRequestBuilders.put(requestUri+"{id}",0).contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writeValueAsString(product)))
                 .andExpect(status().isOk());
         verify(productRepository).save(product);
     }
@@ -120,7 +120,7 @@ public class ProductServiceResourceTest {
 
         when(productRepository.findById(1L)).thenReturn(Optional.of(product));
         when(productRepository.save(any())).thenReturn(product);
-        mockMvc.perform(MockMvcRequestBuilders.patch(requestUri+"/{id}",1L)
+        mockMvc.perform(MockMvcRequestBuilders.patch(requestUri+"{id}",1L)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(map)))
                 .andExpect(status().isOk());
@@ -129,4 +129,15 @@ public class ProductServiceResourceTest {
 
     }
 
+    @Test
+    public void findAllProducts() throws Exception {
+         List<Product> products=new ArrayList<>();
+         products.add(product);
+         products.add(product);
+         when(productRepository.findAll()).thenReturn(products);
+        System.out.println(mapper.writeValueAsString(products));
+         mockMvc.perform(MockMvcRequestBuilders.get(requestUri)).andExpect(content().json(mapper.writeValueAsString(products))).andExpect(status().isOk());
+
+         verify(productRepository).findAll();
+    }
 }
