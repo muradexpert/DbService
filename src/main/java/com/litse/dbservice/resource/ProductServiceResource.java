@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/product")
@@ -68,9 +69,13 @@ public class ProductServiceResource {
 
     @PatchMapping("/{id}")
     public ResponseEntity updateStatus(@RequestBody Map<String, Boolean> status, @PathVariable("id") Long id) {
-        Product product = productRepository.findById(id).get();
-        product.setStatus(status.get("status"));
-        productRepository.save(product);
+       Optional<Product> product= productRepository.findById(id);
+        Product product1 = null;
+        if(product.isPresent()){
+             product1=product.get();
+        }
+        product1.setStatus(status.get("status"));
+        productRepository.save(product1);
         return new ResponseEntity(HttpStatus.OK);
     }
 
