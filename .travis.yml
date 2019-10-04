@@ -20,3 +20,9 @@ script:
  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=muradexpert_DbService
 before_install:
  - chmod +x mvnw
+deploy:
+  provider: heroku
+  api_key:
+    secure: "c5e76a84-b627-4838-a1ff-00b91bba6205"
+
+
