@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/product")
 @Api(value = "HelloWorld ResourceS", description = "shows hello worldS")
 public class ProductServiceResource {
 
