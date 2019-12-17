@@ -1,29 +1,29 @@
-#language: java
-#jdk:
-# - openjdk8
-#addons:
-#  sonarcloud:
-#    organization: "muradexpert"
-#    token:
-#      secure: "37d400320156eb1d6d6677d867f045889f80740c"
-#      # encrypted value of your token
-#services:
-# - postgresql
-#postgres:
-#  adapter: postgresql
-#  database: shop
-#  username: postgres
-#before_script:
-# - "psql -c 'create database shop;' -U postgres"
-#script:
-## the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-# - ./mvnw clean install -B
-# - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=muradexpert_DbService
-#before_install:
-# - chmod +x mvnw
-##deploy:
-##  provider: heroku
-##  api_key:
-##    secure: "45ae6bee-218f-4ed4-8f1c-bdb17ffa0ed0"
-#
-#
+language: java
+jdk:
+ - openjdk8
+addons:
+  sonarcloud:
+    organization: "muradexpert"
+    token:
+      secure: "37d400320156eb1d6d6677d867f045889f80740c"
+      # encrypted value of your token
+services:
+ - postgresql
+postgres:
+  adapter: postgresql
+  database: shop
+  username: postgres
+before_script:
+ - "psql -c 'create database shop;' -U postgres"
+script:
+# the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+ - ./mvnw clean install -B
+ - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=muradexpert_DbService
+before_install:
+ - chmod +x mvnw
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: "45ae6bee-218f-4ed4-8f1c-bdb17ffa0ed0"
+
+
