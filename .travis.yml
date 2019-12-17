@@ -16,7 +16,7 @@ postgres:
 before_script:
  - "psql -c 'create database shop;' -U postgres"
 script:
-# the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+#the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
  - ./mvnw clean install -B
  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=muradexpert_DbService
 before_install:
