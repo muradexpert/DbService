@@ -21,11 +21,11 @@ public class Product {
     @ApiModelProperty(notes = "productId")
     private long id;
     @ApiModelProperty(notes = "productNames")
-    @NotNull
+
     private String productName;
-    @Max(45)
+
     private String productPrice;
-    @Nullable
+
     private boolean status;
 
     public Product(String productName,String productPrice,boolean status) {

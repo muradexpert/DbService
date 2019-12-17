@@ -46,7 +46,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity constraintViolationException(ConstraintViolationException ex) throws IOException {
+    public ResponseEntity constraintViolationException(ConstraintViolationException ex) {
 
         return new ResponseEntity<>("hello", HttpStatus.CHECKPOINT);
     }

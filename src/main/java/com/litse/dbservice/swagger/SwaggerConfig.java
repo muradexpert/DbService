@@ -39,11 +39,11 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "My Product API ",
-                "Some product description of API.",
-                "0.0.1",
+                "Shop Product REST API ",
+                "Information about Shop Product ",
+                "1.0.0",
                 "Terms of service",
-                new Contact("John Doe", "www.example.com", "myeaddress@company.com"),
-                "License of API", "API license URL", Collections.emptyList());
+                new Contact("Murad Mammadli", "www.litse.com", "myeaddress@listse.com"),
+                "License of API", "www.litse.com/license", Collections.emptyList());
     }
 }

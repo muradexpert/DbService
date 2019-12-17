@@ -35,7 +35,7 @@ public class ProductServiceResource {
                     @ApiResponse(code = 100, message = "100 is the message"),
                     @ApiResponse(code = 200, message = "Successful Hello World")
             })
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Product>> findAllProducts() {
         return new ResponseEntity<>(productRepository.findAll(),HttpStatus.OK);
     }
@@ -55,14 +55,14 @@ public class ProductServiceResource {
         return  ResponseEntity.ok("Deleted");
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity createProduct(@RequestBody Product product) {
         return new ResponseEntity<>(productRepository.save(product), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity updateProduct(@RequestBody Product product, @PathVariable("id") long id) {
-        product.setId(id);
+        product.isStatus();
         productRepository.save(product);
         return new ResponseEntity(HttpStatus.OK);
     }
